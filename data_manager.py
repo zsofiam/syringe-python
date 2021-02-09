@@ -15,10 +15,17 @@ def get_comments(cursor):
 def create_comment(cursor, name, text):
 
     #query = f"INSERT INTO comment (name, text) VALUES ('{name}', '{text}')"
+    # query = """
+    #        INSERT INTO COMMENT (name, text)
+    #        VALUES (name = %(name)s, text = %(text)s)
+    #     """, {
+    #     'name': name, 'text': text
+    # }
     query = """
            INSERT INTO COMMENT (name, text) 
-           VALUES (name = %(username)s, text = %(text)s)
+           VALUES (%(name)s, %(text)s)
         """, {
-        'username': name, 'text': text
+        'name': name, 'text': text
     }
+
     cursor.execute(query)
