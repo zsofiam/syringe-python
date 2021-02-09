@@ -1,4 +1,5 @@
 import database_common
+from psycopg2 import sql
 
 
 @database_common.connection_handler
@@ -12,20 +13,8 @@ def get_comments(cursor):
 
 
 @database_common.connection_handler
-def create_comment(cursor, name, text):
+def create_comment(cursor, name: str, text:str):
 
     #query = f"INSERT INTO comment (name, text) VALUES ('{name}', '{text}')"
-    # query = """
-    #        INSERT INTO COMMENT (name, text)
-    #        VALUES (name = %(name)s, text = %(text)s)
-    #     """, {
-    #     'name': name, 'text': text
-    # }
-    query = """
-           INSERT INTO COMMENT (name, text) 
-           VALUES (%(name)s, %(text)s)
-        """, {
-        'name': name, 'text': text
-    }
-
-    cursor.execute(query)
+    query = "INSERT INTO comment (name, text) VALUES (%s,%s)"
+    cursor.execute(query,(name, text))
